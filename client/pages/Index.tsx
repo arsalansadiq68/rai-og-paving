@@ -1,62 +1,16 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { ArrowRight, Check, Hammer, Layers3, MapPin, Ruler, ShieldCheck, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
-export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
+const heroImage = "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=85";
+const workImages = ["https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=900&q=80", "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80", "https://images.unsplash.com/photo-1590644365607-1c5a29a8e4ef?auto=format&fit=crop&w=900&q=80", "https://images.unsplash.com/photo-1531835551805-16d864c8d311?auto=format&fit=crop&w=900&q=80"];
+const services = [["01", "Residential paving", "Clean, considered paving for homes and property projects."], ["02", "Driveway paving", "A strong first impression, built for everyday arrivals and departures."], ["03", "Concrete paving", "Practical, polished surfaces delivered with a professional finish."], ["04", "Paver installation", "Precise installation that brings structure and character to a space."], ["05", "Pathways & walkways", "Thoughtful routes that connect your property beautifully."], ["06", "Repairs & re-paving", "Refresh tired surfaces and bring your paving back to life."]];
+const reasons: [typeof ShieldCheck, string, string][] = [[ShieldCheck, "Quality workmanship", "We pay attention to the details that make a finish feel professional."], [Hammer, "Fast & reliable", "Clear communication and efficient work from the first conversation."], [Ruler, "Competitive rates", "A considered approach to pricing for quality paving work."], [Layers3, "Subcontractor friendly", "Professional, flexible collaboration for builders and contractors."]];
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
-      </div>
-    </div>
-  );
-}
+export default function Index() { return <>
+  <section className="relative isolate min-h-[660px] overflow-hidden bg-[#17211c] text-white"><img src={heroImage} alt="Professional construction and paving work" className="absolute inset-0 -z-20 h-full w-full object-cover animate-[slowzoom_18s_ease-out_infinite_alternate]" /><div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(12,20,16,.94)_0%,rgba(12,20,16,.68)_52%,rgba(12,20,16,.25)_100%)]" /><div className="mx-auto flex min-h-[660px] max-w-7xl items-center px-5 py-20 lg:px-8"><div className="max-w-3xl animate-[fadeup_.8s_ease-out_both]"><p className="eyebrow text-[#e4c477]">Adelaide paving contractor</p><h1 className="mt-6 max-w-3xl font-serif text-5xl font-bold leading-[.98] tracking-[-.04em] sm:text-7xl lg:text-[88px]">Built on <em className="text-[#e4c477]">quality.</em><br />Finished with pride.</h1><p className="mt-7 max-w-xl text-base leading-8 text-white/75 sm:text-lg">Professional paving services for builders, contractors, property projects and residential customers across Adelaide and surrounding suburbs.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link to="/contact" className="flex items-center justify-center gap-3 bg-[#b58c3b] px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] transition hover:bg-[#d0ac62]">Get a free quote <ArrowRight size={16}/></Link><a href="tel:0423575131" className="flex items-center justify-center border border-white/35 px-6 py-4 text-xs font-bold uppercase tracking-[0.16em] transition hover:border-white hover:bg-white/10">Call 0423 575 131</a></div></div></div><div className="absolute bottom-0 right-0 hidden border-l border-t border-white/20 bg-[#17211c]/50 px-10 py-7 backdrop-blur-sm md:block"><p className="text-3xl font-serif font-bold text-[#e4c477]">01</p><p className="mt-1 text-[10px] uppercase tracking-[.2em] text-white/60">Local team · Adelaide</p></div></section>
+  <section className="mx-auto grid max-w-7xl gap-14 px-5 py-24 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:px-8"><div className="relative"><img src={workImages[0]} alt="Paving work in progress" className="aspect-[4/5] w-full object-cover" /><div className="absolute -bottom-7 -right-5 bg-[#e7ddc5] p-6 sm:-right-8"><p className="font-serif text-3xl font-bold text-[#17211c]">Made to last.</p><p className="mt-1 text-[10px] font-bold uppercase tracking-[.15em] text-[#59655e]">Quality · Durability · Craftsmanship</p></div></div><div><p className="eyebrow">The RAI OG difference</p><h2 className="section-title mt-5">Quality paving.<br /><em>Professional results.</em></h2><p className="mt-7 max-w-xl text-base leading-8 text-[#59655e]">RAI OG PAVING provides professional paving services across Adelaide and surrounding suburbs. We work with builders, contractors, property projects and residential customers, delivering reliable service and quality workmanship.</p><div className="mt-8 flex items-center gap-3 text-xs font-bold uppercase tracking-[.14em] text-[#b58c3b]"><MapPin size={17}/> Adelaide & surrounding suburbs</div><Link to="/about" className="mt-9 inline-flex items-center gap-3 border-b border-[#b58c3b] pb-3 text-xs font-bold uppercase tracking-[.14em] transition hover:gap-5">More about us <ArrowRight size={15}/></Link></div></section>
+  <section className="bg-[#ecece6] px-5 py-24 lg:px-8"><div className="mx-auto max-w-7xl"><div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow">What we do</p><h2 className="section-title mt-4">Our paving <em>services.</em></h2></div><Link to="/services" className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.14em] text-[#b58c3b]">View all services <ArrowRight size={15}/></Link></div><div className="mt-14 grid gap-px bg-black/10 sm:grid-cols-2 lg:grid-cols-3">{services.map(([number, title, text]) => <div key={title} className="group bg-[#f7f7f3] p-8 transition hover:bg-[#17211c] hover:text-white"><span className="font-serif text-4xl text-[#b58c3b]">{number}</span><h3 className="mt-12 font-serif text-2xl font-bold">{title}</h3><p className="mt-3 text-sm leading-7 text-[#59655e] group-hover:text-white/60">{text}</p><ArrowRight className="mt-7 text-[#b58c3b] transition group-hover:translate-x-2" size={19}/></div>)}</div></div></section>
+  <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8"><div className="max-w-2xl"><p className="eyebrow">Why choose us</p><h2 className="section-title mt-4">Good work is in<br /><em>the details.</em></h2></div><div className="mt-14 grid gap-10 border-t border-black/10 pt-10 sm:grid-cols-2 lg:grid-cols-4">{reasons.map(([Icon, title, text]) => <div key={title}><Icon size={25} strokeWidth={1.4} className="text-[#b58c3b]"/><h3 className="mt-7 font-serif text-xl font-bold">{title}</h3><p className="mt-3 text-sm leading-7 text-[#59655e]">{text}</p></div>)}</div></section>
+  <section className="bg-[#17211c] px-5 py-24 text-white lg:px-8"><div className="mx-auto max-w-7xl"><div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow text-[#e4c477]">Selected projects</p><h2 className="section-title mt-4 text-white">Our <em>work.</em></h2></div><Link to="/gallery" className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.14em] text-[#e4c477]">View all projects <ArrowRight size={15}/></Link></div><div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{workImages.map((image, index) => <img key={image} src={image} alt={`Paving project ${index + 1}`} loading="lazy" className={`w-full object-cover transition duration-500 hover:scale-[1.02] ${index === 0 ? "aspect-[4/5]" : "aspect-square"}`} />)}</div></div></section>
+  <section className="bg-[#b58c3b] px-5 py-16 lg:px-8"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center"><div><p className="eyebrow text-white/75">Ready when you are</p><h2 className="mt-4 font-serif text-4xl font-bold tracking-tight text-white sm:text-5xl">Ready to start your project?</h2></div><Link to="/contact" className="inline-flex shrink-0 items-center justify-center gap-3 bg-[#17211c] px-7 py-4 text-xs font-bold uppercase tracking-[.15em] text-white transition hover:bg-white hover:text-[#17211c]">Get a free quote <ArrowRight size={16}/></Link></div></section>
+</> }
